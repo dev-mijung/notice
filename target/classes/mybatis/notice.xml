@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace = "dev.mvc.notice.NoticeDAOInter">
+
+ <insert id="create" parameterType="NoticeVO">
+  INSERT INTO board(boardno, title, content, board_passwd, cnt)
+  VALUES(board_seq.nextval, #{title}, #{content}, #{board_passwd}, 0)
+ </insert>
+ 
+ <select id="list" resultType="NoticeVO">
+ 	SELECT boardno, title, content, board_passwd, visible, cnt
+	FROM board
+ </select>
+ 
+ <select id="read" resultType="NoticeVO" parameterType="int">
+ 	SELECT boardno, title, content, board_passwd, visible, cnt
+	FROM board
+	WHERE boardno=#{boardno}
+ </select>
+ 
+ <update id="passwd_update" parameterType="HashMap">
+ 	UPDATE board
+	SET board_passwd=#{board_passwd}
+	WHERE boardno = #{boardno}
+ </update>
+ 
+ <select id="join_by_memberno" resultType="Member_Notice_VO" parameterType="int">
+ 	SELECT m.memberno as m_memberno, m.mname as m_mname,
+    	   b.boardno, b.memberno, b.title, b.content, b.board_passwd, b.visible, b.cnt
+	FROM member m, board b
+	WHERE (m.memberno = b.memberno) AND m.memberno = #{memberno}
+ </select>
+</mapper>
