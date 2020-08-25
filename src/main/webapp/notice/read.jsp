@@ -6,6 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>상세 페이지</title>
+<script type="text/javascript">
+// 비밀번호 확인
+  function popup(){
+    window.name="parentForm";
+    window.open("./passwdck.jsp",
+        "chkForm", "width=400, height=10, resizable = no, scrollbars = no, toolbar=no, status=no, menubar=no, location=no");  
+  
+  	if($('#board_passwd',frm).val()!=''){
+  		
+  	}
+  }
+</script> 
 </head>
 <body>
  <table border="1" style='width: 70%;'>
@@ -30,7 +42,8 @@
 
  </table>
  <div>
-  <button>비밀번호 설정</button>
+  <button type="button" onclick="popup()">비밀번호 설정</button>
+  <input type="hidden" id="board_passwd">
  </div>
 </body>
 </html>

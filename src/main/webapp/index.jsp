@@ -20,8 +20,16 @@
     
 </head>
 <body>
-<a href="${root }/member/login.do"><h3>로그인</h3></a>
-  
+
+<c:choose>
+        <%-- 로그인 안한 경우 --%>
+  <c:when test="${sessionScope.id == null && sessionScope.id_admin == null}">
+	<jsp:forward page="/member/login.do"/>
+  </c:when>
+  <c:otherwise>
+   <jsp:forward page="/notice/list.do"/>
+  </c:otherwise>
+ </c:choose>
  
  
 </body>
