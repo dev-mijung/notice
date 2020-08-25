@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,16 +8,12 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" /> 
 <title>게시판</title>
  
-<link href="../css/style.css" rel="Stylesheet" type="text/css">
- 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  
 </head>
 <body>
-<table class="table table-striped" style='width: 100%;'>
+<jsp:include page="/menu/top.jsp" flush='false' />
+<table border = "1" style='width: 70%;'>
       <colgroup>
         <col style="width: 10%;"></col>
         <col style="width: 20%;"></col>
@@ -40,21 +32,26 @@
       
       <%-- table 내용 --%>
       <tbody>
-        <c:forEach var="noticeVO" items="${list }">
-          <c:set var="boardno" value="${noticeVO.boardno }" />
-          <c:set var="title" value="${noticeVO.title }" />
-          <c:set var="cnt" value="${noticeVO.cnt }" />
+        <c:forEach var="member_Notice_VO" items="${list }">
+          <c:set var="boardno" value="${member_Notice_VO.boardno }" />
+          <c:set var="title" value="${member_Notice_VO.title }" />
+          <c:set var="cnt" value="${member_Notice_VO.cnt }" />
+          <c:set var="m_mname" value="${member_Notice_VO.m_mname }" />
           
           <tr> 
             <td style='text-align: center;'>${boardno}</td>
-            <td style='text-align: center;'>${title}</td>
+            <td style='text-align: center;'>
+              <a href="./read.do?boardno=${boardno }">${title}</a>
+            </td>
+            <td style='text-align: center;'>${m_mname }</td>
             <td style='text-align: center;'>${cnt}</td>
           </tr>
         </c:forEach>
         
       </tbody>
     </table>
-    <button type='button' onclick=''>글쓰기</button>
- 
+    <div style="text-align: center; margin-top: 2%; margin-right: 20%;">
+      <button type='button' onclick="location.href='./create.do'">글쓰기</button>
+    </div>
 </body>
 </html>

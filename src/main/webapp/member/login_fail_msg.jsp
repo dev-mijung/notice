@@ -29,17 +29,13 @@
 <DIV class='title_line'>알림</DIV>
   <DIV class='message'>
     <fieldset class='fieldset_basic'>
-      <ul>
-        <li class='li_none'>회원 로그인에 실패했습니다.</li>
-        <li class='li_none'>ID 또는 패스워드가 일치하지 않습니다.</li>
-        <li class='li_none'>
-          <button type="submit" class="btn btn-primary btn-md"
-                       onclick="history.back()">로그인 다시 시도</button>
-          <button type="submit" class="btn btn-primary btn-md"
-                       onclick="location.href='${pageContext.request.contextPath}/index.jsp'">확인</button>
-        </li>
+      	회원 로그인에 실패했습니다.<br>
+        ID 또는 패스워드가 일치하지 않습니다.
+          <button type="submit" 
+                       onclick="history.back()">확인</button>
+       
         
-      </ul>
+      
     </fieldset>    
   </DIV>
  

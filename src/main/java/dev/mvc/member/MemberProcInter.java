@@ -16,4 +16,11 @@ public interface MemberProcInter {
 	 * @return
 	 */
 	public MemberVO readById(String id);
+	
+	/**
+	 * Á¶È¸
+	 * @param memberno
+	 * @return
+	 */
+	public MemberVO read(int memberno);
 }

@@ -28,9 +28,14 @@ VALUES(member_seq.nextval, 'user3', '1234', '태연');
 INSERT INTO member(memberno, id, passwd, mname) 
 VALUES(member_seq.nextval, 'user4', '1234', '소진');
 
--- 조회
+-- 목록
 SELECT memberno, id, passwd, mname
 FROM member;
+
+-- 조회
+SELECT memberno, id, passwd, mname
+FROM member
+WHERE memberno = 1;
 
 -- 로그인
 SELECT COUNT(memberno) as cnt

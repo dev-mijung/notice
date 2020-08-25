@@ -17,10 +17,6 @@
     window.name="parentForm";
     window.open("./passwdck.jsp",
         "chkForm", "width=400, height=10, resizable = no, scrollbars = no, toolbar=no, status=no, menubar=no, location=no");  
-  
-  	if($('#board_passwd',frm).val()!=''){
-  		
-  	}
   }
 </script> 
 </head> 
@@ -36,24 +32,25 @@
         <col style="width: 20%;"></col>
         <col style="width: 80%;"></col>
       </colgroup>
-	  <tr>
-	    <td>제목 </td>
-	    <td><input type="text" name="title" style="width:96%;"></td>
-	  </tr>
-	  <tr>
-	    <td>내용 </td>
-	    <td>
-	      <textarea cols=100  rows=10 name="content" style="overflow-x:hidden; overflow-y:auto"></textarea>
-	   </td>
-	  </tr>
-	  <tr>
-	    <td colspan="2">
-	      <button type="button" onclick="popup()">비밀번호 설정</button> 
-	      <input type="hidden" id="board_passwd">
-	    </td>
-	  <tr>
-	</table>
-      <div style='text-align: center;'>
+      
+			  <tr>
+			    <td>제목 </td>
+			    <td><input type="text" name="title" style="width:96%;"></td>
+			  </tr>
+			  <tr>
+			    <td>내용 </td>
+			    <td>
+			      <textarea cols=100  rows=10 name="content" style="overflow-x:hidden; overflow-y:auto"></textarea>
+			   </td>
+			  </tr>
+			  <tr>
+			    <td colspan="2">
+			      <button type="button" onclick="popup()">비밀번호 설정</button> 
+			      ${ck_id_save == 'Y' ? "checked='checked'" : "" }
+			    </td>
+			  <tr>
+			</table>
+      	<div style='text-align: center;'>
         <button type="submit">저장</button>
         <button type="button" onclick='./list.do'>취소</button>
       </div>

@@ -1,3 +1,4 @@
+  
 package dev.mvc.notice;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public interface NoticeDAOInter {
 	  * 게시글 목록
 	  * @return
 	  */
-	 public List<NoticeVO> list();
+	 public List<Member_Notice_VO> list();
 	 
 	 
 	 /**
@@ -28,7 +29,7 @@ public interface NoticeDAOInter {
 	 
 	 
 	 /**
-	  * 비밀번호 설정
+	  * 비밀번호 등록
 	  * @param hashMap
 	  * @return
 	  */
@@ -40,4 +41,11 @@ public interface NoticeDAOInter {
 	  * @return
 	  */
 	 public Member_Notice_VO join_by_memberno(int memberno);	
+	 
+	 /**
+	  * 조회수 증가
+	  * @param boardno
+	  * @return
+	  */
+	 public int cnt_up(int boardno);
 }

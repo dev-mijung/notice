@@ -6,15 +6,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace = "dev.mvc.member.MemberDAOInter">
 
-	<select id='login' resultType="int" parameterType="HashMap">
-		SELECT COUNT(memberno) as cnt
-		FROM member
-		WHERE id=#{id} AND passwd=#{passwd}
-	</select>
+  <select id='login' resultType="int" parameterType="HashMap">
+    SELECT COUNT(memberno) as cnt
+    FROM member
+    WHERE id=#{id} AND passwd=#{passwd}
+  </select>
 
-	<select id="readById" resultType="MemberVO" parameterType="String">
-	    SELECT memberno, id, passwd, mname
-		FROM member
-		WHERE id = #{id}
-  	</select>  
+  <select id="readById" resultType="MemberVO" parameterType="String">
+    SELECT memberno, id, passwd, mname
+    FROM member
+    WHERE id = #{id}
+    </select>  
+    
+  <select id="read" resultType="MemberVO" parameterType="int">
+  	SELECT memberno, id, passwd, mname
+	FROM member
+	WHERE memberno = #{memberno}
+  </select>
 </mapper>

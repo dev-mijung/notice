@@ -21,4 +21,10 @@ public class MemberProc implements MemberProcInter {
 		MemberVO memberVO = this.MemberDAO.readById(id);
 		return memberVO;
 	}
+
+	@Override
+	public MemberVO read(int memberno) {
+		MemberVO memberVO = this.MemberDAO.read(memberno);
+		return memberVO;
+	}
 }

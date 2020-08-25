@@ -7,31 +7,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace = "dev.mvc.notice.NoticeDAOInter">
 
  <insert id="create" parameterType="NoticeVO">
-  INSERT INTO board(boardno, title, content, board_passwd, cnt)
-  VALUES(board_seq.nextval, #{title}, #{content}, #{board_passwd}, 0)
+  INSERT INTO board(boardno, memberno, title, content, board_passwd, visible, cnt)
+  VALUES(board_seq.nextval, #{memberno}, #{title}, #{content}, #{board_passwd,jdbcType=VARCHAR},#{visible}, 0)
  </insert>
  
- <select id="list" resultType="NoticeVO">
- 	SELECT boardno, title, content, board_passwd, visible, cnt
-	FROM board
+ <select id="list" resultType="Member_Notice_VO" >
+  SELECT m.memberno as m_memberno, m.mname as m_mname,
+          b.boardno, b.memberno, b.title, b.content, b.board_passwd, b.visible, b.cnt
+  FROM member m, board b
+  WHERE m.memberno = b.memberno
  </select>
  
  <select id="read" resultType="NoticeVO" parameterType="int">
- 	SELECT boardno, title, content, board_passwd, visible, cnt
-	FROM board
-	WHERE boardno=#{boardno}
+  SELECT boardno, title, content, board_passwd, visible, cnt
+  FROM board
+  WHERE boardno=#{boardno}
  </select>
  
  <update id="passwd_update" parameterType="HashMap">
- 	UPDATE board
-	SET board_passwd=#{board_passwd}
-	WHERE boardno = #{boardno}
+  UPDATE board
+  SET board_passwd=#{board_passwd}
+  WHERE boardno = #{boardno}
  </update>
  
- <select id="join_by_memberno" resultType="Member_Notice_VO" parameterType="int">
- 	SELECT m.memberno as m_memberno, m.mname as m_mname,
-    	   b.boardno, b.memberno, b.title, b.content, b.board_passwd, b.visible, b.cnt
-	FROM member m, board b
-	WHERE (m.memberno = b.memberno) AND m.memberno = #{memberno}
- </select>
+<select id="join_by_memberno" resultType="Member_Notice_VO" parameterType="int">
+  SELECT m.memberno as m_memberno, m.mname as m_mname,
+            b.boardno, b.memberno, b.title, b.content, b.board_passwd, b.visible, b.cnt
+  FROM member m, board b
+  WHERE (m.memberno = b.memberno) AND m.memberno = #{memberno}
+ </select> 
+ 
+ <update id="cnt_up" parameterType="int">
+ 	UPDATE board
+	SET cnt = cnt + 1
+	WHERE boardno =#{boardno}
+ </update>
 </mapper>

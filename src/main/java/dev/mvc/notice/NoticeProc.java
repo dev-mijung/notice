@@ -18,8 +18,8 @@ public class NoticeProc implements NoticeProcInter {
 	}
 
 	@Override
-	public List<NoticeVO> list() {
-		List<NoticeVO> list = this.NoticeDAO.list();
+	public List<Member_Notice_VO> list() {
+		List<Member_Notice_VO> list = this.NoticeDAO.list();
 		return list;
 	}
 
@@ -39,6 +39,12 @@ public class NoticeProc implements NoticeProcInter {
 	public Member_Notice_VO join_by_memberno(int memberno) {
 		Member_Notice_VO member_Notice_VO = this.NoticeDAO.join_by_memberno(memberno);
 		return member_Notice_VO;
+	}
+
+	@Override
+	public int cnt_up(int boardno) {
+		int cnt = this.NoticeDAO.cnt_up(boardno);
+		return cnt;
 	}
 
 }
